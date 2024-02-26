@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3132fopxkjok"]
+
+[ext_resource type="Script" path="res://Taxi/taxi.gd" id="1_cv0lq"]
+[ext_resource type="Texture2D" uid="uid://dw824ymuwquq5" path="res://Taxi/Taxi.png" id="1_qb2vq"]
+
+[node name="Taxi" type="Node2D"]
+script = ExtResource("1_cv0lq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qb2vq")
