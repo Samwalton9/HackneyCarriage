@@ -9,7 +9,7 @@ extends CharacterBody2D
 var current_speed : float = 0.0
 var current_reverse_speed : float  = 0.0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var up_down = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
 	var left_right = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 
