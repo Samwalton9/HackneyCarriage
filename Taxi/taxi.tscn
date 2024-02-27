@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3132fopxkjok"]
+[gd_scene load_steps=6 format=3 uid="uid://c3132fopxkjok"]
 
 [ext_resource type="Script" path="res://Taxi/taxi.gd" id="1_cv0lq"]
 [ext_resource type="Texture2D" uid="uid://dw824ymuwquq5" path="res://Taxi/Taxi.png" id="1_qb2vq"]
@@ -8,6 +8,9 @@
 radius = 8.0
 height = 42.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7v8x"]
+size = Vector2(20, 8)
+
 [node name="Taxi" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_cv0lq")
@@ -16,7 +19,7 @@ script = ExtResource("1_cv0lq")
 position = Vector2(2.08165e-12, 0.5)
 texture = ExtResource("1_qb2vq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_khtxr")
 
@@ -32,3 +35,10 @@ offset_bottom = 31.0
 grow_horizontal = 2
 horizontal_alignment = 1
 script = ExtResource("3_kdt84")
+
+[node name="PickupDropoffArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupDropoffArea"]
+shape = SubResource("RectangleShape2D_u7v8x")

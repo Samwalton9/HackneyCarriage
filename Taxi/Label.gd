@@ -1,6 +1,6 @@
 extends Label
 
-var velocity
+var velocity : Vector2
 
 func _process(delta):
 	text = str(velocity.x)
