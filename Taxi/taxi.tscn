@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3132fopxkjok"]
+[gd_scene load_steps=5 format=3 uid="uid://c3132fopxkjok"]
 
 [ext_resource type="Script" path="res://Taxi/taxi.gd" id="1_cv0lq"]
 [ext_resource type="Texture2D" uid="uid://dw824ymuwquq5" path="res://Taxi/Taxi.png" id="1_qb2vq"]
+[ext_resource type="Script" path="res://Taxi/DebugSpeedLabel.gd" id="3_kdt84"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_khtxr"]
 radius = 8.0
@@ -18,3 +19,16 @@ texture = ExtResource("1_qb2vq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_khtxr")
+
+[node name="DebugSpeedLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 8.0
+offset_right = 20.0
+offset_bottom = 31.0
+grow_horizontal = 2
+horizontal_alignment = 1
+script = ExtResource("3_kdt84")
