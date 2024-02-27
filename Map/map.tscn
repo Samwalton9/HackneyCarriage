@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw6v8vicgu6ns"]
+[gd_scene load_steps=4 format=3 uid="uid://cw6v8vicgu6ns"]
 
 [ext_resource type="PackedScene" uid="uid://c3132fopxkjok" path="res://Taxi/taxi.tscn" id="1_krncb"]
+[ext_resource type="Script" path="res://Map/map.gd" id="1_x81hf"]
 [ext_resource type="PackedScene" uid="uid://o8cqhdlqjtwk" path="res://Rides/pickup_dropoff.tscn" id="2_bsr8r"]
 
 [node name="Map" type="Node2D"]
+script = ExtResource("1_x81hf")
 
 [node name="Taxi" parent="." instance=ExtResource("1_krncb")]
-position = Vector2(57, 87)
+position = Vector2(4, 51)
 
 [node name="Camera2D" type="Camera2D" parent="Taxi"]
 zoom = Vector2(6, 6)
 
 [node name="PickupDropoff" parent="." instance=ExtResource("2_bsr8r")]
-position = Vector2(90, 45)
+position = Vector2(50, 50)
+
+[connection signal="dropped_off" from="PickupDropoff" to="." method="_on_pickup_dropoff_dropped_off"]
