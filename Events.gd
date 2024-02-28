@@ -1,3 +1,5 @@
 extends Node
 
-signal new_pickup(node)
+signal picked_up(node)
+
+signal dropped_off

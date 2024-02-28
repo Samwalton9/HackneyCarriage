@@ -15,5 +15,3 @@ zoom = Vector2(6, 6)
 
 [node name="PickupDropoff" parent="." instance=ExtResource("2_bsr8r")]
 position = Vector2(50, 50)
-
-[connection signal="dropped_off" from="PickupDropoff" to="." method="_on_pickup_dropoff_dropped_off"]
