@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt050334lu31a"]
+[gd_scene load_steps=6 format=3 uid="uid://dt050334lu31a"]
 
 [ext_resource type="PackedScene" uid="uid://cw6v8vicgu6ns" path="res://Map/map.tscn" id="1_ies4l"]
 [ext_resource type="Script" path="res://JourneyTimer.gd" id="2_a3xi6"]
 [ext_resource type="Script" path="res://TimerLabel.gd" id="3_irp7r"]
+[ext_resource type="Script" path="res://CostLabel.gd" id="4_bewwp"]
+[ext_resource type="Script" path="res://MoneyLabel.gd" id="5_xxrre"]
 
 [node name="Main" type="Node2D"]
 
@@ -24,3 +26,19 @@ offset_bottom = 90.0
 theme_override_font_sizes/font_size = 48
 text = "test"
 script = ExtResource("3_irp7r")
+
+[node name="CostLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1746.0
+offset_top = 35.0
+offset_right = 1873.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 48
+script = ExtResource("4_bewwp")
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1716.0
+offset_top = 963.0
+offset_right = 1875.0
+offset_bottom = 1030.0
+theme_override_font_sizes/font_size = 48
+script = ExtResource("5_xxrre")

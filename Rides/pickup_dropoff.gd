@@ -14,6 +14,7 @@ func move_for_dropoff() -> void:
 	var new_location = new_dropoff_location()
 
 	distance_to_travel = position.distance_to(new_location)
+	Journey.journey_distance = distance_to_travel
 
 	position = new_location
 
@@ -28,7 +29,7 @@ func new_dropoff_location() -> Vector2:
 func _on_area_2d_area_entered(_area):
 	if mode == PICKUP:
 		move_for_dropoff()
-		Events.picked_up.emit(self)
+		Events.picked_up.emit()
 	elif mode == DROPOFF:
 		queue_free()
 		Events.dropped_off.emit()
