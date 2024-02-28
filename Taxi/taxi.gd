@@ -14,11 +14,17 @@ func _physics_process(_delta):
 	var left_right = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 
 	if left_right > 0:
-		# Right
-		rotation += turn_rate
+		# Wheels right
+		if current_speed >= 0.0:
+			turn_right()
+		else:
+			turn_left()
 	elif left_right < 0:
-		# Left
-		rotation -= turn_rate
+		# Wheels left
+		if current_speed >= 0.0:
+			turn_left()
+		else:
+			turn_right()
 
 	if up_down > 0:
 		# Forwards
@@ -39,3 +45,10 @@ func _physics_process(_delta):
 	$DebugSpeedLabel.velocity = velocity
 
 	move_and_slide()
+
+
+func turn_left() -> void:
+	rotation -= turn_rate
+
+func turn_right() -> void:
+	rotation += turn_rate
