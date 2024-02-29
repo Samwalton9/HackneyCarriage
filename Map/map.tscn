@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw6v8vicgu6ns"]
+[gd_scene load_steps=5 format=3 uid="uid://cw6v8vicgu6ns"]
 
 [ext_resource type="PackedScene" uid="uid://c3132fopxkjok" path="res://Taxi/taxi.tscn" id="1_krncb"]
 [ext_resource type="Script" path="res://Map/map.gd" id="1_x81hf"]
 [ext_resource type="PackedScene" uid="uid://o8cqhdlqjtwk" path="res://Rides/pickup_dropoff.tscn" id="2_bsr8r"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_aofkj"]
+vertices = PackedVector2Array(243, -104, 244, 124, 11, 129, 20, -87, 128, -109)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1, 140, 255, 134, 253, -114, 127, -120, 11, -96)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_x81hf")
@@ -15,3 +21,7 @@ zoom = Vector2(6, 6)
 
 [node name="PickupDropoff" parent="." instance=ExtResource("2_bsr8r")]
 position = Vector2(50, 50)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_aofkj")
+navigation_layers = 4

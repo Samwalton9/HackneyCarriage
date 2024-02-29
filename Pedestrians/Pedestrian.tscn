@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0wyivvpyyal3"]
+
+[ext_resource type="Script" path="res://Pedestrians/Pedestrian.gd" id="1_tui6g"]
+[ext_resource type="Texture2D" uid="uid://b80i8diekk6ar" path="res://Pedestrians/Pedestrian.png" id="1_uty81"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emax8"]
+atlas = ExtResource("1_uty81")
+region = Rect2(9, 0, 9, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ext8e"]
+atlas = ExtResource("1_uty81")
+region = Rect2(0, 0, 9, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uan07"]
+atlas = ExtResource("1_uty81")
+region = Rect2(18, 0, 9, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2bfm5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emax8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ext8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emax8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uan07")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gc5ba"]
+radius = 3.0
+
+[node name="Pedestrian" type="CharacterBody2D"]
+script = ExtResource("1_tui6g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_2bfm5")
+autoplay = "default"
+frame = 2
+frame_progress = 0.0949241
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+navigation_layers = 4
+debug_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gc5ba")
