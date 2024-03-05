@@ -26,10 +26,14 @@ func new_dropoff_location() -> Vector2:
 	return Vector2(rand_x, rand_y)
 
 
-func _on_area_2d_area_entered(_area):
+func _on_area_2d_area_entered(area):
 	if mode == PICKUP:
-		move_for_dropoff()
-		Events.picked_up.emit()
+		$CustomerBody.move_to_taxi(area)
 	elif mode == DROPOFF:
 		queue_free()
 		Events.dropped_off.emit()
+
+
+func _on_customer_body_reached_taxi():
+		move_for_dropoff()
+		Events.picked_up.emit()

@@ -1,9 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://o8cqhdlqjtwk"]
+[gd_scene load_steps=9 format=3 uid="uid://o8cqhdlqjtwk"]
 
 [ext_resource type="Script" path="res://Rides/pickup_dropoff.gd" id="1_t8mna"]
+[ext_resource type="Texture2D" uid="uid://b80i8diekk6ar" path="res://Pedestrians/Pedestrian.png" id="2_01f7s"]
+[ext_resource type="Script" path="res://Rides/CustomerBody.gd" id="3_tkq0k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh63o"]
 size = Vector2(20, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54gy0"]
+atlas = ExtResource("2_01f7s")
+region = Rect2(0, 0, 9, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcvdy"]
+atlas = ExtResource("2_01f7s")
+region = Rect2(9, 0, 9, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jucy"]
+atlas = ExtResource("2_01f7s")
+region = Rect2(18, 0, 9, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mkjt3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54gy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcvdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jucy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcvdy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="PickupDropoff" type="Node2D"]
 script = ExtResource("1_t8mna")
@@ -15,4 +49,15 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_sh63o")
 
+[node name="CustomerBody" type="CharacterBody2D" parent="."]
+position = Vector2(0, -9)
+script = ExtResource("3_tkq0k")
+
+[node name="CustomerSprite" type="AnimatedSprite2D" parent="CustomerBody"]
+position = Vector2(0, -3)
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_mkjt3")
+frame = 1
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="reached_taxi" from="CustomerBody" to="." method="_on_customer_body_reached_taxi"]
