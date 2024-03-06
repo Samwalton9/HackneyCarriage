@@ -15,7 +15,10 @@ signal reached_taxi
 func _physics_process(_delta):
 	if state == PICKING_UP:
 		var dir = global_position.direction_to(destination.global_position)
-		
+
+		$CustomerSprite.look_at(destination.global_position)
+		$CustomerSprite.rotation_degrees -= 90
+
 		velocity = dir * speed
 		move_and_slide()
 

@@ -53,16 +53,15 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_sh63o")
 
 [node name="CustomerBody" type="CharacterBody2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -14)
 script = ExtResource("3_tkq0k")
 
 [node name="CustomerSprite" type="AnimatedSprite2D" parent="CustomerBody"]
-position = Vector2(0, -3)
-rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_mkjt3")
 frame = 1
 
 [node name="TaxiEnterArea" type="Area2D" parent="CustomerBody"]
+position = Vector2(0, 3)
 collision_layer = 8
 collision_mask = 8
 
