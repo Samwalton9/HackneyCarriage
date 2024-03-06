@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://o8cqhdlqjtwk"]
+[gd_scene load_steps=10 format=3 uid="uid://o8cqhdlqjtwk"]
 
 [ext_resource type="Script" path="res://Rides/pickup_dropoff.gd" id="1_t8mna"]
 [ext_resource type="Texture2D" uid="uid://b80i8diekk6ar" path="res://Pedestrians/Pedestrian.png" id="2_01f7s"]
@@ -39,6 +39,9 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bsgng"]
+radius = 3.0
+
 [node name="PickupDropoff" type="Node2D"]
 script = ExtResource("1_t8mna")
 
@@ -59,5 +62,15 @@ rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_mkjt3")
 frame = 1
 
+[node name="TaxiEnterArea" type="Area2D" parent="CustomerBody"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerBody/TaxiEnterArea"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_bsgng")
+debug_color = Color(0.92549, 0, 0.682353, 0.419608)
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="reached_taxi" from="CustomerBody" to="." method="_on_customer_body_reached_taxi"]
+[connection signal="area_entered" from="CustomerBody/TaxiEnterArea" to="CustomerBody" method="_on_taxi_enter_area_area_entered"]

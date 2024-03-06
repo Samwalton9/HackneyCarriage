@@ -19,16 +19,13 @@ func _physics_process(_delta):
 		velocity = dir * speed
 		move_and_slide()
 
-		if global_position.distance_to(destination.global_position) < 10:
-			get_in_taxi()
-
 
 func move_to_taxi(taxi_position : Area2D) -> void:
 	state = PICKING_UP
 	destination = taxi_position
 
 
-func get_in_taxi() -> void:
+func _on_taxi_enter_area_area_entered(_area):
 	reached_taxi.emit()
 	visible = false
 	state = WAITING
