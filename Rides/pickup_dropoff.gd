@@ -10,21 +10,27 @@ var distance_to_travel : float
 var taxi_in_pickup_zone : bool = false
 var taxi_pickup_area : Area2D
 
+@export var max_speed = 10
+
 @onready var Customer := $CustomerBody
 
 
 func _physics_process(_delta):
-	if taxi_in_pickup_zone and mode == PICKUP and Globals.taxi_speed < 10:
-		Customer.move_to_taxi(taxi_pickup_area.global_position)
-		mode = DROPOFF
+	if taxi_in_pickup_zone and Globals.taxi_speed < max_speed:
+		if mode == PICKUP:
+			Customer.move_to_taxi(taxi_pickup_area.global_position)
+
+		elif mode == DROPOFF:
+			queue_free()
+			Events.dropped_off.emit()
 
 	if Customer.state == Customer.PICKING_UP and not taxi_in_pickup_zone:
 		Customer.return_to_position()
 		mode = PICKUP
 
 
+
 func move_for_dropoff() -> void:
-	mode = DROPOFF
 	var new_location = new_dropoff_location()
 
 	distance_to_travel = position.distance_to(new_location)
@@ -32,10 +38,13 @@ func move_for_dropoff() -> void:
 
 	position = new_location
 
+	mode = DROPOFF
+	taxi_in_pickup_zone = false
+
 
 func new_dropoff_location() -> Vector2:
-	var rand_x = randi_range(0, 100)
-	var rand_y = randi_range(0, 100)
+	var rand_x = randi_range(100, 150)
+	var rand_y = randi_range(100, 150)
 
 	return Vector2(rand_x, rand_y)
 
@@ -44,15 +53,10 @@ func _on_area_2d_area_entered(area):
 	taxi_in_pickup_zone = true
 	taxi_pickup_area = area
 
-	# TODO - replace with a similar speed check as for picking up.
-	if mode == DROPOFF:
-		queue_free()
-		Events.dropped_off.emit()
-
 
 func _on_customer_body_reached_taxi():
-		move_for_dropoff()
-		Events.picked_up.emit()
+	move_for_dropoff()
+	Events.picked_up.emit()
 
 
 func _on_area_2d_area_exited(_area):
