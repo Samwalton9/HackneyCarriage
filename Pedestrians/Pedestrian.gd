@@ -38,4 +38,3 @@ func actor_setup() -> void:
 func get_next_destination() -> void:
 	destination = patrol_points[point_counter]
 	nav_agent.target_position = destination
-	print(nav_agent.target_position)
