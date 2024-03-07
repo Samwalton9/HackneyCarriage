@@ -10,11 +10,17 @@ var distance_to_travel : float
 var taxi_in_pickup_zone : bool = false
 var taxi_pickup_area : Area2D
 
+@onready var Customer := $CustomerBody
+
 
 func _physics_process(_delta):
 	if taxi_in_pickup_zone and mode == PICKUP and Globals.taxi_speed < 10:
-		$CustomerBody.move_to_taxi(taxi_pickup_area)
+		Customer.move_to_taxi(taxi_pickup_area.global_position)
 		mode = DROPOFF
+
+	if Customer.state == Customer.PICKING_UP and not taxi_in_pickup_zone:
+		Customer.return_to_position()
+		mode = PICKUP
 
 
 func move_for_dropoff() -> void:
