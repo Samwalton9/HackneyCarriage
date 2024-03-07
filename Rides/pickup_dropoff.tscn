@@ -53,7 +53,7 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_sh63o")
 
 [node name="CustomerBody" type="CharacterBody2D" parent="."]
-position = Vector2(0, -14)
+position = Vector2(0, -18)
 script = ExtResource("3_tkq0k")
 
 [node name="CustomerSprite" type="AnimatedSprite2D" parent="CustomerBody"]

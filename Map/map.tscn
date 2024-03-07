@@ -1,8 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw6v8vicgu6ns"]
+[gd_scene load_steps=8 format=3 uid="uid://cw6v8vicgu6ns"]
 
 [ext_resource type="PackedScene" uid="uid://c3132fopxkjok" path="res://Taxi/taxi.tscn" id="1_krncb"]
 [ext_resource type="Script" path="res://Map/map.gd" id="1_x81hf"]
 [ext_resource type="PackedScene" uid="uid://o8cqhdlqjtwk" path="res://Rides/pickup_dropoff.tscn" id="2_bsr8r"]
+[ext_resource type="Texture2D" uid="uid://ba2df1l81p5k3" path="res://Map/Tileset.png" id="2_u5n1v"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_srm3o"]
+texture = ExtResource("2_u5n1v")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_p5xla"]
+tile_size = Vector2i(40, 40)
+sources/0 = SubResource("TileSetAtlasSource_srm3o")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_aofkj"]
 vertices = PackedVector2Array(243, -104, 244, 124, 11, 129, 20, -87, 128, -109)
@@ -13,6 +26,11 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [node name="Map" type="Node2D"]
 script = ExtResource("1_x81hf")
 
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_p5xla")
+format = 2
+layer_0/tile_data = PackedInt32Array(720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720908, 0, 0, 720907, 0, 0, 720906, 0, 0, 786442, 0, 1, 786443, 0, 1, 786444, 0, 1, 786445, 0, 1, 786446, 0, 1, 786447, 0, 1, 720916, 65536, 0, 786452, 65536, 1, 720912, 0, 0, 786448, 0, 1, 720913, 0, 0, 786449, 0, 1, 720914, 0, 0, 786450, 0, 1, 720915, 0, 0, 786451, 0, 1, 655375, 65536, 1342177280, 655374, 65536, 1342177281, 589839, 0, 1342177280, 589838, 0, 1342177281, 524303, 0, 1342177280, 524302, 0, 1342177281, 393231, 0, 1342177280, 393230, 0, 1342177281, 458767, 0, 1342177280, 458766, 0, 1342177281, 327695, 0, 1342177280, 327694, 0, 1342177281, 524310, 0, 1342177280, 524309, 0, 1342177281, 589846, 0, 1342177280, 589845, 0, 1342177281, 655382, 0, 1342177280, 655381, 0, 1342177281, 720918, 0, 1342177280, 720917, 0, 1342177281, 786454, 0, 1342177280, 786453, 0, 1342177281, 851990, 0, 1342177280, 851989, 0, 1342177281, 917526, 0, 1342177280, 917525, 0, 1342177281, 983062, 0, 1342177280, 983061, 0, 1342177281, 1048598, 0, 1342177280, 1048597, 0, 1342177281, 327696, 0, 0, 393232, 0, 1, 327697, 0, 0, 393233, 0, 1, 327699, 0, 0, 393235, 0, 1, 327698, 0, 0, 393234, 0, 1, 131071, 0, 0, 196607, 0, 1, 65536, 0, 0, 131072, 0, 1, 65537, 0, 0, 131073, 0, 1, 65538, 0, 0, 131074, 0, 1, 65539, 0, 0, 131075, 0, 1, 65540, 65536, 0, 131076, 65536, 1, 131067, 65536, 805306369, 196603, 65536, 805306368, 131068, 0, 805306369, 196604, 0, 805306368, 131069, 0, 805306369, 196605, 0, 805306368, 131070, 0, 805306369, 196606, 0, 805306368, 65542, 0, 1610612737, 65541, 0, 1610612736, 131078, 0, 1610612737, 131077, 0, 1610612736, -131066, 0, 1610612737, -131067, 0, 1610612736, -65530, 0, 1610612737, -65531, 0, 1610612736, 6, 0, 1610612737, 5, 0, 1610612736, 196614, 0, 1610612737, 196613, 0, 1610612736, 262150, 0, 1610612737, 262149, 0, 1610612736, 327686, 0, 1610612737, 327685, 0, 1610612736, 393222, 0, 1610612737, 393221, 0, 1610612736)
+
 [node name="Taxi" parent="." instance=ExtResource("1_krncb")]
 position = Vector2(4, 51)
 
@@ -20,7 +38,7 @@ position = Vector2(4, 51)
 zoom = Vector2(6, 6)
 
 [node name="PickupDropoff" parent="." instance=ExtResource("2_bsr8r")]
-position = Vector2(50, 50)
+position = Vector2(46, 51)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_aofkj")
