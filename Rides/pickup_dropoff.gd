@@ -7,6 +7,14 @@ enum {
 
 var mode := PICKUP
 var distance_to_travel : float
+var taxi_in_pickup_zone : bool = false
+var taxi_pickup_area : Area2D
+
+
+func _physics_process(_delta):
+	if taxi_in_pickup_zone and mode == PICKUP and Globals.taxi_speed < 10:
+		$CustomerBody.move_to_taxi(taxi_pickup_area)
+		mode = DROPOFF
 
 
 func move_for_dropoff() -> void:
@@ -27,9 +35,11 @@ func new_dropoff_location() -> Vector2:
 
 
 func _on_area_2d_area_entered(area):
-	if mode == PICKUP:
-		$CustomerBody.move_to_taxi(area)
-	elif mode == DROPOFF:
+	taxi_in_pickup_zone = true
+	taxi_pickup_area = area
+
+	# TODO - replace with a similar speed check as for picking up.
+	if mode == DROPOFF:
 		queue_free()
 		Events.dropped_off.emit()
 
@@ -37,3 +47,7 @@ func _on_area_2d_area_entered(area):
 func _on_customer_body_reached_taxi():
 		move_for_dropoff()
 		Events.picked_up.emit()
+
+
+func _on_area_2d_area_exited(_area):
+	taxi_in_pickup_zone = false

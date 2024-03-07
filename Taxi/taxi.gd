@@ -16,6 +16,10 @@ func _ready():
 
 
 func _physics_process(_delta):
+	process_movement()
+
+
+func process_movement() -> void:
 	var up_down = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
 	var left_right = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 
@@ -42,6 +46,7 @@ func _physics_process(_delta):
 		current_speed -= deceleration
 
 	current_speed = clamp(current_speed, -current_reverse_speed, max_speed)
+	Globals.taxi_speed = current_speed
 
 	velocity = Vector2(1,0).rotated(rotation) * current_speed
 

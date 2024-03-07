@@ -71,5 +71,6 @@ shape = SubResource("CircleShape2D_bsgng")
 debug_color = Color(0.92549, 0, 0.682353, 0.419608)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="reached_taxi" from="CustomerBody" to="." method="_on_customer_body_reached_taxi"]
 [connection signal="area_entered" from="CustomerBody/TaxiEnterArea" to="CustomerBody" method="_on_taxi_enter_area_area_entered"]
