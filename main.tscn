@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt050334lu31a"]
+[gd_scene load_steps=10 format=3 uid="uid://dt050334lu31a"]
 
+[ext_resource type="Texture2D" uid="uid://ba2df1l81p5k3" path="res://Map/Tileset.png" id="1_g1vvr"]
 [ext_resource type="PackedScene" uid="uid://cw6v8vicgu6ns" path="res://Map/map.tscn" id="1_ies4l"]
 [ext_resource type="Script" path="res://JourneyTimer.gd" id="2_a3xi6"]
 [ext_resource type="Script" path="res://TimerLabel.gd" id="3_irp7r"]
@@ -7,7 +8,45 @@
 [ext_resource type="Script" path="res://MoneyLabel.gd" id="5_xxrre"]
 [ext_resource type="PackedScene" uid="uid://b0wyivvpyyal3" path="res://Pedestrians/Pedestrian.tscn" id="6_5xnxb"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_srm3o"]
+texture = ExtResource("1_g1vvr")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_i2tvd"]
+tile_size = Vector2i(40, 40)
+sources/0 = SubResource("TileSetAtlasSource_srm3o")
+
 [node name="Main" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_i2tvd")
+format = 2
+layer_0/tile_data = PackedInt32Array(720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720908, 0, 0, 720907, 0, 0, 720906, 0, 0, 786442, 0, 1, 786443, 0, 1, 786444, 0, 1, 786445, 0, 1, 786446, 0, 1, 786447, 0, 1, 720916, 65536, 0, 786452, 65536, 1, 720912, 0, 0, 786448, 0, 1, 720913, 0, 0, 786449, 0, 1, 720914, 0, 0, 786450, 0, 1, 720915, 0, 0, 786451, 0, 1, 655375, 65536, 1342177280, 655374, 65536, 1342177281, 589839, 0, 1342177280, 589838, 0, 1342177281, 524303, 0, 1342177280, 524302, 0, 1342177281, 393231, 0, 1342177280, 393230, 0, 1342177281, 458767, 0, 1342177280, 458766, 0, 1342177281, 327695, 0, 1342177280, 327694, 0, 1342177281, 524310, 0, 1342177280, 524309, 0, 1342177281, 589846, 0, 1342177280, 589845, 0, 1342177281, 655382, 0, 1342177280, 655381, 0, 1342177281, 720918, 0, 1342177280, 720917, 0, 1342177281, 786454, 0, 1342177280, 786453, 0, 1342177281, 851990, 0, 1342177280, 851989, 0, 1342177281, 917526, 0, 1342177280, 917525, 0, 1342177281, 983062, 0, 1342177280, 983061, 0, 1342177281, 1048598, 0, 1342177280, 1048597, 0, 1342177281, 327696, 0, 0, 393232, 0, 1, 327697, 0, 0, 393233, 0, 1, 327699, 0, 0, 393235, 0, 1, 327698, 0, 0, 393234, 0, 1)
 
 [node name="Map" parent="." instance=ExtResource("1_ies4l")]
 position = Vector2(665, 407)
