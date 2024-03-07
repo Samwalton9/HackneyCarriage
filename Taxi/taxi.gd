@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var max_speed : float = 80
 @export var max_reverse_speed : float  = 20
 @export var acceleration : float  = 1.5
-@export var base_turn_rate : float  = 0.03
+@export var base_turn_rate : float  = 0.04
 @export var deceleration : float  = 0.5
 
 var current_speed : float = 0.0
