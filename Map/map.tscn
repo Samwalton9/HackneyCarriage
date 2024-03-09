@@ -20,9 +20,9 @@ tile_size = Vector2i(40, 40)
 sources/0 = SubResource("TileSetAtlasSource_srm3o")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_aofkj"]
-vertices = PackedVector2Array(243, -104, 244, 124, 11, 129, 20, -87, 128, -109)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1, 140, 255, 134, 253, -114, 127, -120, 11, -96)])
+vertices = PackedVector2Array(190, 30, 10, 30, 10, -110, 190, -110)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 40, 200, 40, 200, -120, 0, -120)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Map" type="Node2D"]
