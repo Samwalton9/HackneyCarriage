@@ -22,5 +22,3 @@ func _on_dropped_off():
 
 	call_deferred("add_child", instance)
 	instance.position = Journey.get_new_pickup_location()
-
-	Journey.pickup_loc = instance.position
