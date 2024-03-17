@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://btn3t6xvo1eht"]
+
+[node name="DebugPickup" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-8, -8)
+color = Color(0, 0.866667, 0.145098, 1)
+offset = Vector2(4, 4)
+polygon = PackedVector2Array(0, 0, 0, 0, 8, 0, 8, 8, 0, 8)

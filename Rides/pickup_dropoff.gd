@@ -31,7 +31,7 @@ func _physics_process(_delta):
 
 
 func move_for_dropoff() -> void:
-	var new_location = new_dropoff_location()
+	var new_location = Journey.get_new_dropoff_location()
 
 	distance_to_travel = position.distance_to(new_location)
 	Journey.journey_distance = distance_to_travel
@@ -40,13 +40,6 @@ func move_for_dropoff() -> void:
 
 	mode = DROPOFF
 	taxi_in_pickup_zone = false
-
-
-func new_dropoff_location() -> Vector2:
-	var rand_x = randi_range(100, 150)
-	var rand_y = randi_range(100, 150)
-
-	return Vector2(rand_x, rand_y)
 
 
 func _on_area_2d_area_entered(area):

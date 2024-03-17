@@ -9,7 +9,7 @@ var state := WAITING
 var destination : Vector2
 var original_position : Vector2
 var distance_to_original_position : float = 0.0
-var speed = 5.0
+var speed = 10.0
 
 signal reached_taxi
 
