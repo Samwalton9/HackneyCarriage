@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://o8cqhdlqjtwk"]
+[gd_scene load_steps=18 format=3 uid="uid://o8cqhdlqjtwk"]
 
 [ext_resource type="Script" path="res://Rides/pickup_dropoff.gd" id="1_t8mna"]
 [ext_resource type="Texture2D" uid="uid://b80i8diekk6ar" path="res://Pedestrians/Pedestrian.png" id="2_01f7s"]
@@ -43,57 +43,36 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsgng"]
 radius = 3.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_csafk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ckt8"]
 atlas = ExtResource("4_g170r")
-region = Rect2(0, 0, 40, 25)
+region = Rect2(0, 0, 25, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0gem6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_61b4e"]
 atlas = ExtResource("4_g170r")
-region = Rect2(40, 0, 40, 25)
+region = Rect2(25, 0, 25, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fom4l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_88tiw"]
 atlas = ExtResource("4_g170r")
-region = Rect2(80, 0, 40, 25)
+region = Rect2(50, 0, 25, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xpppu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrgv8"]
 atlas = ExtResource("4_g170r")
-region = Rect2(120, 0, 40, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bsxv8"]
-atlas = ExtResource("4_g170r")
-region = Rect2(160, 0, 40, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_14xfx"]
-atlas = ExtResource("4_g170r")
-region = Rect2(200, 0, 40, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6qpfr"]
-atlas = ExtResource("4_g170r")
-region = Rect2(240, 0, 40, 25)
+region = Rect2(75, 0, 25, 15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_25ybo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_csafk")
+"texture": SubResource("AtlasTexture_7ckt8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0gem6")
+"texture": SubResource("AtlasTexture_61b4e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fom4l")
+"texture": SubResource("AtlasTexture_88tiw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xpppu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bsxv8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_14xfx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6qpfr")
+"texture": SubResource("AtlasTexture_hrgv8")
 }],
 "loop": true,
 "name": &"default",
@@ -151,10 +130,10 @@ shape = SubResource("CircleShape2D_bsgng")
 debug_color = Color(0.92549, 0, 0.682353, 0.419608)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.01706, 1.01706)
+scale = Vector2(1.02811, 1.02811)
 sprite_frames = SubResource("SpriteFrames_25ybo")
 autoplay = "default"
-frame_progress = 0.337136
+frame_progress = 0.378625
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
