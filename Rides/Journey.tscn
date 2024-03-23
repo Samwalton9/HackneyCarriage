@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvy5jmt5hnxch"]
+
+[ext_resource type="Script" path="res://Rides/Journey.gd" id="1_stf2u"]
+
+[node name="Journey" type="Node"]
+script = ExtResource("1_stf2u")

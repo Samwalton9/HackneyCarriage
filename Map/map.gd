@@ -6,7 +6,7 @@ var spawn_locations : Array[Vector2]
 func _ready():
 	Events.dropped_off.connect(_on_dropped_off)
 	spawn_locations = $TileMap.get_possible_pickup_dropoff_locations()
-	Journey.possible_pickups_and_dropoffs = spawn_locations
+	JourneyManager.possible_pickups_and_dropoffs = spawn_locations
 
 	if OS.is_debug_build():
 		for spawn_loc in spawn_locations:
@@ -21,4 +21,4 @@ func _on_dropped_off(_dropoff_loc):
 	var instance = pickup_dropoff.instantiate()
 
 	call_deferred("add_child", instance)
-	instance.position = Journey.get_new_pickup_location()
+	instance.position = JourneyManager.get_new_available_location()
