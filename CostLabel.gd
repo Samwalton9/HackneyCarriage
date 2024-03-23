@@ -6,10 +6,10 @@ func _ready():
 
 	visible = false
 
-func _on_picked_up():
+func _on_picked_up(_pickup_loc):
 	visible = true
 	text = str(Journey.journey_cost)
 
 
-func _on_dropped_off():
+func _on_dropped_off(_dropoff_loc):
 	visible = false

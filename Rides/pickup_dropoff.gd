@@ -15,6 +15,10 @@ var taxi_pickup_area : Area2D
 @onready var Customer := $CustomerBody
 
 
+func _ready():
+	Journey.new_dropoff_location_set.connect(_on_new_dropoff_location_set)
+
+
 func _physics_process(_delta):
 	if taxi_in_pickup_zone and Globals.taxi_speed < max_pickup_speed:
 		if mode == PICKUP:
@@ -22,7 +26,7 @@ func _physics_process(_delta):
 
 		elif mode == DROPOFF:
 			queue_free()
-			Events.dropped_off.emit()
+			Events.dropped_off.emit(position)
 
 	if Customer.state == Customer.PICKING_UP and not taxi_in_pickup_zone:
 		Customer.return_to_position()
@@ -30,12 +34,7 @@ func _physics_process(_delta):
 
 
 
-func move_for_dropoff() -> void:
-	var new_location = Journey.get_new_dropoff_location()
-
-	distance_to_travel = position.distance_to(new_location)
-	Journey.journey_distance = distance_to_travel
-
+func _on_new_dropoff_location_set(new_location) -> void:
 	position = new_location
 
 	mode = DROPOFF
@@ -49,8 +48,7 @@ func _on_area_2d_area_entered(area):
 
 func _on_customer_body_reached_taxi():
 	if mode == PICKUP:
-		move_for_dropoff()
-		Events.picked_up.emit()
+		Events.picked_up.emit(position)
 
 
 func _on_area_2d_area_exited(_area):

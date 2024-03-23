@@ -16,7 +16,7 @@ func _ready():
 			instance.position = spawn_loc
 
 
-func _on_dropped_off():
+func _on_dropped_off(_dropoff_loc):
 	var pickup_dropoff = load("res://Rides/pickup_dropoff.tscn")
 	var instance = pickup_dropoff.instantiate()
 
