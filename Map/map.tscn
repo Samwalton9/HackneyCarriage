@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cw6v8vicgu6ns"]
+[gd_scene load_steps=8 format=3 uid="uid://cw6v8vicgu6ns"]
 
 [ext_resource type="PackedScene" uid="uid://c3132fopxkjok" path="res://Taxi/taxi.tscn" id="1_krncb"]
 [ext_resource type="Script" path="res://Map/map.gd" id="1_x81hf"]
-[ext_resource type="PackedScene" uid="uid://o8cqhdlqjtwk" path="res://Rides/pickup_dropoff.tscn" id="2_bsr8r"]
 [ext_resource type="Texture2D" uid="uid://ba2df1l81p5k3" path="res://Map/Tileset.png" id="2_u5n1v"]
 [ext_resource type="Script" path="res://Map/TileMap.gd" id="3_46r8l"]
 
@@ -48,9 +47,12 @@ position = Vector2(-32, 59)
 [node name="Camera2D" type="Camera2D" parent="Taxi"]
 zoom = Vector2(6, 6)
 
-[node name="PickupDropoff" parent="." instance=ExtResource("2_bsr8r")]
-position = Vector2(46, 51)
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_aofkj")
 navigation_layers = 4
+
+[node name="NewPickupTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="NewPickupTimer" to="." method="_on_new_pickup_timer_timeout"]

@@ -2,7 +2,7 @@ extends Node
 
 var possible_pickups_and_dropoffs : Array[Vector2]
 var active_pickups_or_dropoffs : Array[Vector2]
-var num_available_journeys : int = 0
+
 var num_active_journeys : int = 0
 
 signal new_pickup_location_set(pickup_location)
