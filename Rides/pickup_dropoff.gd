@@ -17,7 +17,9 @@ var journey
 
 
 func _physics_process(_delta):
-	if taxi_in_pickup_zone and Globals.taxi_speed < max_pickup_speed:
+	if (taxi_in_pickup_zone and
+		Globals.taxi_speed < max_pickup_speed and
+		not JourneyManager.car_is_full()):
 		if mode == PICKUP:
 			Customer.move_to_taxi(taxi_pickup_area.global_position)
 
@@ -37,7 +39,7 @@ func _on_area_2d_area_entered(area):
 
 
 func _on_customer_body_reached_taxi():
-	if mode == PICKUP:
+	if mode == PICKUP and not JourneyManager.car_is_full():
 		Events.picked_up.emit(position)
 		journey = JourneyManager.start_new_journey(position)
 

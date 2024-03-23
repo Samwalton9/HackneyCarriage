@@ -4,12 +4,20 @@ var possible_pickups_and_dropoffs : Array[Vector2]
 var active_pickups_or_dropoffs : Array[Vector2]
 
 var num_active_journeys : int = 0
+const MAX_ACTIVE_JOURNEYS : int = 3
 
 signal new_pickup_location_set(pickup_location)
 
 
 func _ready():
 	Events.dropped_off.connect(_on_dropped_off)
+
+
+func car_is_full() -> bool:
+	if num_active_journeys >= MAX_ACTIVE_JOURNEYS:
+		return true
+	else:
+		return false
 
 
 func start_new_journey(pickup_location):

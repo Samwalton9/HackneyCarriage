@@ -43,8 +43,11 @@ func return_to_position() -> void:
 
 
 func _on_taxi_enter_area_area_entered(_area):
-	reached_taxi.emit()
-	# TODO: Passenger shouldn't invisibly walk towards old position
-	# To reproduce make visible true.
-	visible = false
-	state = WAITING
+	# TODO: This is checked too many times, and passengers can be picked
+	# up by ramming the car into them at speed.
+	if not JourneyManager.car_is_full():
+		reached_taxi.emit()
+		# TODO: Passenger shouldn't invisibly walk towards old position
+		# To reproduce make visible true.
+		visible = false
+		state = WAITING
