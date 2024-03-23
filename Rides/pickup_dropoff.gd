@@ -10,13 +10,13 @@ var distance_to_travel : float
 var taxi_in_pickup_zone : bool = false
 var taxi_pickup_area : Area2D
 
-@export var max_speed = 10
+@export var max_pickup_speed = 10
 
 @onready var Customer := $CustomerBody
 
 
 func _physics_process(_delta):
-	if taxi_in_pickup_zone and Globals.taxi_speed < max_speed:
+	if taxi_in_pickup_zone and Globals.taxi_speed < max_pickup_speed:
 		if mode == PICKUP:
 			Customer.move_to_taxi(taxi_pickup_area.global_position)
 
