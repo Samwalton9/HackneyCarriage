@@ -27,6 +27,7 @@ func _physics_process(_delta):
 
 		get_next_destination()
 
+	# TODO: Replace with visible rotation rather than snapping
 	look_at(destination)
 
 
