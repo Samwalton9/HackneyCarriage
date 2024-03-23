@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt050334lu31a"]
+[gd_scene load_steps=5 format=3 uid="uid://dt050334lu31a"]
 
 [ext_resource type="PackedScene" uid="uid://cw6v8vicgu6ns" path="res://Map/map.tscn" id="1_ies4l"]
+[ext_resource type="Script" path="res://UICanvasLayer.gd" id="2_2wugv"]
 [ext_resource type="Script" path="res://MoneyLabel.gd" id="5_xxrre"]
 [ext_resource type="PackedScene" uid="uid://b0wyivvpyyal3" path="res://Pedestrians/Pedestrian.tscn" id="6_5xnxb"]
 
@@ -9,15 +10,23 @@
 [node name="Map" parent="." instance=ExtResource("1_ies4l")]
 position = Vector2(665, 407)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_2wugv")
 
-[node name="MoneyLabel" type="Label" parent="CanvasLayer"]
+[node name="MoneyLabel" type="Label" parent="UICanvasLayer"]
 offset_left = 1716.0
 offset_top = 963.0
 offset_right = 1875.0
 offset_bottom = 1030.0
 theme_override_font_sizes/font_size = 48
 script = ExtResource("5_xxrre")
+
+[node name="StreetNameLabel" type="Label" parent="UICanvasLayer"]
+offset_left = 37.0
+offset_top = 955.0
+offset_right = 449.0
+offset_bottom = 1052.0
+theme_override_font_sizes/font_size = 64
 
 [node name="Pedestrian" parent="." instance=ExtResource("6_5xnxb")]
 position = Vector2(772, 409)

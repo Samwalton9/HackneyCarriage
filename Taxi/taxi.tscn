@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3132fopxkjok"]
+[gd_scene load_steps=8 format=3 uid="uid://c3132fopxkjok"]
 
 [ext_resource type="Script" path="res://Taxi/taxi.gd" id="1_cv0lq"]
 [ext_resource type="Texture2D" uid="uid://dw824ymuwquq5" path="res://Taxi/Taxi.png" id="1_qb2vq"]
@@ -13,6 +13,9 @@ size = Vector2(20, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_445u1"]
 size = Vector2(34, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shhfa"]
+size = Vector2(4, 4)
 
 [node name="Taxi" type="CharacterBody2D"]
 motion_mode = 1
@@ -53,3 +56,10 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerPickupArea"]
 shape = SubResource("RectangleShape2D_445u1")
 debug_color = Color(0, 0.65098, 0.00392157, 0.419608)
+
+[node name="RoadDetectionArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoadDetectionArea"]
+shape = SubResource("RectangleShape2D_shhfa")

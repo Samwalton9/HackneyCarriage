@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw6v8vicgu6ns"]
+[gd_scene load_steps=11 format=3 uid="uid://cw6v8vicgu6ns"]
 
 [ext_resource type="PackedScene" uid="uid://c3132fopxkjok" path="res://Taxi/taxi.tscn" id="1_krncb"]
 [ext_resource type="Script" path="res://Map/map.gd" id="1_x81hf"]
 [ext_resource type="Texture2D" uid="uid://ba2df1l81p5k3" path="res://Map/Tileset.png" id="2_u5n1v"]
 [ext_resource type="Script" path="res://Map/TileMap.gd" id="3_46r8l"]
+[ext_resource type="PackedScene" uid="uid://wreaqtv45r7e" path="res://Map/RoadArea.tscn" id="4_1nukd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_srm3o"]
 texture = ExtResource("2_u5n1v")
@@ -25,6 +26,14 @@ custom_data_layer_0/name = "spawn_offset"
 custom_data_layer_0/type = 5
 sources/0 = SubResource("TileSetAtlasSource_srm3o")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nbie"]
+resource_local_to_scene = true
+size = Vector2(282, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jru7"]
+resource_local_to_scene = true
+size = Vector2(78, 281)
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_aofkj"]
 vertices = PackedVector2Array(190, 30, 10, 30, 10, -110, 190, -110)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
@@ -38,8 +47,24 @@ script = ExtResource("1_x81hf")
 position = Vector2(1, 0)
 tile_set = SubResource("TileSet_p5xla")
 format = 2
-layer_0/tile_data = PackedInt32Array(131071, 65536, 0, 196607, 65536, 1, 65536, 65536, 0, 131072, 65536, 1, 65537, 65536, 0, 131073, 65536, 1, 65538, 65536, 0, 131074, 65536, 1, 65539, 65536, 0, 131075, 65536, 1, 65540, 131072, 0, 131076, 131072, 1, 131070, 65536, 0, 196606, 65536, 1, 65542, 0, 1342177280, 65541, 0, 1342177281, 131078, 0, 1342177280, 131077, 0, 1342177281, 65543, 131072, 805306369, 131079, 131072, 805306368, 196614, 65536, 1342177280, 196613, 65536, 1342177281, 6, 65536, 1342177280, 5, 65536, 1342177281)
+layer_0/tile_data = PackedInt32Array(131071, 65536, 0, 196607, 65536, 1, 65536, 65536, 0, 131072, 65536, 1, 65537, 65536, 0, 131073, 65536, 1, 65538, 65536, 0, 131074, 65536, 1, 65539, 65536, 0, 131075, 65536, 1, 65540, 131072, 0, 131076, 131072, 1, 131070, 65536, 0, 196606, 65536, 1, 65542, 0, 1342177280, 65541, 0, 1342177281, 131078, 0, 1342177280, 131077, 0, 1342177281, 196614, 65536, 1342177280, 196613, 65536, 1342177281, 6, 65536, 1342177280, 5, 65536, 1342177281, -65531, 65536, 1342177281, -65530, 65536, 1342177280, -131067, 65536, 1342177281, -131066, 65536, 1342177280, -196603, 65536, 1342177281, -196602, 65536, 1342177280)
 script = ExtResource("3_46r8l")
+
+[node name="Road" parent="TileMap" instance=ExtResource("4_1nukd")]
+position = Vector2(60, 81)
+road_name = "Regent Street"
+
+[node name="CollisionShape2D" parent="TileMap/Road" index="0"]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_6nbie")
+
+[node name="Road1" parent="TileMap" instance=ExtResource("4_1nukd")]
+position = Vector2(242, 22)
+road_name = "Oxford Street"
+
+[node name="CollisionShape2D" parent="TileMap/Road1" index="0"]
+position = Vector2(-2, -1.5)
+shape = SubResource("RectangleShape2D_1jru7")
 
 [node name="Taxi" parent="." instance=ExtResource("1_krncb")]
 position = Vector2(-32, 59)
@@ -56,3 +81,6 @@ wait_time = 5.0
 autostart = true
 
 [connection signal="timeout" from="NewPickupTimer" to="." method="_on_new_pickup_timer_timeout"]
+
+[editable path="TileMap/Road"]
+[editable path="TileMap/Road1"]

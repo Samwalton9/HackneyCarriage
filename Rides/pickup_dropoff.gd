@@ -24,6 +24,7 @@ func _physics_process(_delta):
 			Customer.move_to_taxi(taxi_pickup_area.global_position)
 
 		elif mode == DROPOFF:
+			# TODO: Fix this seemingly not working if you have multiple passengers.
 			queue_free()
 			Events.dropped_off.emit(position)
 			journey.dropped_off()
