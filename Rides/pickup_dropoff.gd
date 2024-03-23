@@ -48,8 +48,9 @@ func _on_area_2d_area_entered(area):
 
 
 func _on_customer_body_reached_taxi():
-	move_for_dropoff()
-	Events.picked_up.emit()
+	if mode == PICKUP:
+		move_for_dropoff()
+		Events.picked_up.emit()
 
 
 func _on_area_2d_area_exited(_area):

@@ -130,10 +130,10 @@ shape = SubResource("CircleShape2D_bsgng")
 debug_color = Color(0.92549, 0, 0.682353, 0.419608)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.09216, 1.09216)
+scale = Vector2(1.10126, 1.10126)
 sprite_frames = SubResource("SpriteFrames_25ybo")
 autoplay = "default"
-frame_progress = 0.148597
+frame_progress = 0.6935
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
