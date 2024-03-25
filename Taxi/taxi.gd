@@ -51,7 +51,8 @@ func process_movement() -> void:
 	velocity = Vector2(1,0).rotated(rotation) * current_speed
 
 	# Debug
-	$DebugSpeedLabel.velocity = velocity
+	if OS.is_debug_build():
+		make_debugs_visible()
 
 	move_and_slide()
 
@@ -59,5 +60,14 @@ func process_movement() -> void:
 func turn_left() -> void:
 	rotation -= current_turn_rate
 
+
 func turn_right() -> void:
 	rotation += current_turn_rate
+
+
+func make_debugs_visible() -> void:
+	$DebugSpeedLabel.visible = true
+	$DebugSpeedLabel.velocity = velocity
+
+	$DebugPositionLabel.visible = true
+	$DebugPositionLabel.taxi_position = position

@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3132fopxkjok"]
+[gd_scene load_steps=10 format=3 uid="uid://c3132fopxkjok"]
 
 [ext_resource type="Script" path="res://Taxi/taxi.gd" id="1_cv0lq"]
 [ext_resource type="Texture2D" uid="uid://dw824ymuwquq5" path="res://Taxi/Taxi.png" id="1_qb2vq"]
+[ext_resource type="Script" path="res://Taxi/DebugPositionLabel.gd" id="3_7q3kb"]
 [ext_resource type="Script" path="res://Taxi/DebugSpeedLabel.gd" id="3_kdt84"]
+[ext_resource type="Script" path="res://Taxi/PassengerSpeech.gd" id="4_1vtv4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_khtxr"]
 radius = 8.0
@@ -29,6 +31,14 @@ texture = ExtResource("1_qb2vq")
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_khtxr")
 
+[node name="DebugPositionLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -31.0
+offset_right = 20.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 13
+script = ExtResource("3_7q3kb")
+
 [node name="DebugSpeedLabel" type="Label" parent="."]
 visible = false
 anchors_preset = 5
@@ -37,8 +47,10 @@ anchor_right = 0.5
 offset_left = -20.0
 offset_top = 8.0
 offset_right = 20.0
-offset_bottom = 31.0
+offset_bottom = 26.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 13
+text = "80"
 horizontal_alignment = 1
 script = ExtResource("3_kdt84")
 
@@ -63,3 +75,12 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoadDetectionArea"]
 shape = SubResource("RectangleShape2D_shhfa")
+
+[node name="PassengerSpeech" type="Node2D" parent="."]
+script = ExtResource("4_1vtv4")
+
+[node name="PassengerSpeechLabel" type="Label" parent="PassengerSpeech"]
+offset_left = -30.0
+offset_top = -31.0
+offset_right = 30.0
+offset_bottom = -8.0

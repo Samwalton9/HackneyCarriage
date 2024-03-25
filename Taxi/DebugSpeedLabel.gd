@@ -3,4 +3,4 @@ extends Label
 var velocity = 0.0
 
 func _process(_delta):
-	text = str(snapped(velocity.length(),0.01))
+	text = str(snapped(velocity.length(),1))
