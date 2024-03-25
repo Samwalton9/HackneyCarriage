@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7ijg2q3tg8ok"]
+
+[ext_resource type="Texture2D" uid="uid://b80i8diekk6ar" path="res://Pedestrians/Pedestrian.png" id="1_7dbny"]
+[ext_resource type="Script" path="res://Pedestrians/person.gd" id="2_v355p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emax8"]
+atlas = ExtResource("1_7dbny")
+region = Rect2(9, 0, 9, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ext8e"]
+atlas = ExtResource("1_7dbny")
+region = Rect2(0, 0, 9, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uan07"]
+atlas = ExtResource("1_7dbny")
+region = Rect2(18, 0, 9, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2bfm5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emax8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ext8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emax8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uan07")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Person" type="AnimatedSprite2D"]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_2bfm5")
+frame = 3
+frame_progress = 0.984529
+script = ExtResource("2_v355p")

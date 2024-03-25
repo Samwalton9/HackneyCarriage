@@ -25,16 +25,20 @@ func _physics_process(_delta : float) -> void:
 		var dir := global_position.direction_to(destination)
 
 		# TODO: Replace with visible rotation rather than snapping
-		$CustomerSprite.look_at(destination)
-		$CustomerSprite.rotation_degrees -= 90
+		$Person.look_at(destination)
+		$Person.rotation_degrees -= 90
 
 		velocity = dir * speed
 		move_and_slide()
+
+	elif distance_to_original_position < 1:
+		$Person.stop_walking()
 
 
 func move_to_taxi(taxi_position : Vector2) -> void:
 	state = PICKING_UP
 	destination = taxi_position
+	$Person.start_walking()
 
 
 func return_to_position() -> void:
