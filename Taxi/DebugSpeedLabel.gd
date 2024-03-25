@@ -1,6 +1,6 @@
 extends Label
 
-var velocity = 0.0
+var velocity := Vector2.ZERO
 
-func _process(_delta):
+func _process(_delta : float) -> void:
 	text = str(snapped(velocity.length(),1))

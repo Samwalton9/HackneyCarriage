@@ -22,9 +22,9 @@ var journey_cost : int
 var destination_road_name : String
 
 
-func set_journey_max_cost(distance) -> void:
+func set_journey_max_cost(distance : float) -> void:
 	journey_cost = round(distance * 5)
 
 
-func dropped_off():
+func dropped_off() -> void:
 	Globals.money += journey_cost

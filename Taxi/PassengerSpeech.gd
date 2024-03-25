@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var _speech_label = $PassengerSpeechLabel
-@onready var _timer = $Timer
+@onready var _speech_label := $PassengerSpeechLabel
+@onready var _timer := $Timer
 
 
 func _ready() -> void:
@@ -17,5 +17,5 @@ func _on_new_journey(journey : Node) -> void:
 	_timer.start()
 
 
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	_speech_label.visible = false

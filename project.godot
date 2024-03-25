@@ -21,6 +21,10 @@ Events="*res://Autoloads/Events.gd"
 JourneyManager="*res://Autoloads/JourneyManager.gd"
 Globals="*res://Autoloads/Globals.gd"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+
 [display]
 
 window/size/viewport_width=1920

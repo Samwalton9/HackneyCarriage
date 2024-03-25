@@ -1,25 +1,25 @@
 extends CharacterBody2D
 
 @export var patrol_points : Array[Vector2]
-@export var speed = 25
+@export var speed : float = 25
 
 @onready var nav_agent := $NavigationAgent2D
 
 var point_counter : int = 0
 var destination : Vector2
 
-func _ready():
+func _ready() -> void:
 	call_deferred("actor_setup")
 
 
-func _physics_process(_delta):
-	var next_pos = nav_agent.get_next_path_position()
-	var dir = global_position.direction_to(next_pos)
+func _physics_process(_delta : float) -> void:
+	var next_pos : Vector2 = nav_agent.get_next_path_position()
+	var dir := global_position.direction_to(next_pos)
 
 	velocity = dir * speed
 	move_and_slide()
 
-	var distance_left = destination - global_position
+	var distance_left : Vector2 = destination - global_position
 	if distance_left.length() < 1:
 		point_counter += 1
 		if point_counter == len(patrol_points):

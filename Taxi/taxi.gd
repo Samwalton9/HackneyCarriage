@@ -11,19 +11,19 @@ var current_reverse_speed : float  = 0.0
 var current_turn_rate : float
 
 
-func _ready():
+func _ready() -> void:
 	current_turn_rate = base_turn_rate
 
 
-func _physics_process(_delta):
+func _physics_process(_delta : float) -> void:
 	process_movement()
 
 
 func process_movement() -> void:
-	var up_down = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
-	var left_right = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	var up_down := Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
+	var left_right := Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 
-	var speed_fraction = current_speed/max_speed
+	var speed_fraction : float = current_speed/max_speed
 	current_turn_rate = base_turn_rate * speed_fraction
 
 	if current_speed != 0:

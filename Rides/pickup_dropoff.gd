@@ -9,14 +9,14 @@ var mode := PICKUP
 var distance_to_travel : float
 var taxi_in_pickup_zone : bool = false
 var taxi_pickup_area : Area2D
-var journey
+var journey : Node
 
-@export var max_pickup_speed = 10
+@export var max_pickup_speed : float = 10
 
 @onready var Customer := $CustomerBody
 
 
-func _physics_process(_delta):
+func _physics_process(_delta : float) -> void:
 	if (taxi_in_pickup_zone and
 		Globals.taxi_speed < max_pickup_speed and
 		not JourneyManager.car_is_full()):
@@ -34,12 +34,12 @@ func _physics_process(_delta):
 		mode = PICKUP
 
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(area : Area2D) -> void:
 	taxi_in_pickup_zone = true
 	taxi_pickup_area = area
 
 
-func _on_customer_body_reached_taxi():
+func _on_customer_body_reached_taxi() -> void:
 	if mode == PICKUP and not JourneyManager.car_is_full():
 		Events.picked_up.emit(position)
 		journey = JourneyManager.start_new_journey(position)
@@ -49,5 +49,5 @@ func _on_customer_body_reached_taxi():
 		taxi_in_pickup_zone = false
 
 
-func _on_area_2d_area_exited(_area):
+func _on_area_2d_area_exited(_area : Area2D) -> void:
 	taxi_in_pickup_zone = false
