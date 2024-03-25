@@ -32,6 +32,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_khtxr")
 
 [node name="DebugPositionLabel" type="Label" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -31.0
 offset_right = 20.0
@@ -80,7 +81,16 @@ shape = SubResource("RectangleShape2D_shhfa")
 script = ExtResource("4_1vtv4")
 
 [node name="PassengerSpeechLabel" type="Label" parent="PassengerSpeech"]
-offset_left = -30.0
+visible = false
+offset_left = -45.0
 offset_top = -31.0
-offset_right = 30.0
+offset_right = 45.0
 offset_bottom = -8.0
+theme_override_font_sizes/font_size = 13
+text = "To "
+
+[node name="Timer" type="Timer" parent="PassengerSpeech"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="PassengerSpeech/Timer" to="PassengerSpeech" method="_on_timer_timeout"]

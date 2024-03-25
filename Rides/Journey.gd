@@ -19,6 +19,8 @@ var dropoff_loc := Vector2.ZERO:
 
 var journey_cost : int
 
+var destination_road_name : String
+
 
 func set_journey_max_cost(distance) -> void:
 	journey_cost = round(distance * 5)

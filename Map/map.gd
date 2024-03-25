@@ -11,7 +11,9 @@ const MAX_PICKUPS : int = 3
 func _ready():
 	Events.picked_up.connect(_on_picked_up)
 	spawn_locations = $TileMap.get_possible_pickup_dropoff_locations()
+
 	JourneyManager.possible_pickups_and_dropoffs = spawn_locations
+	Globals.map_global_position = global_position
 
 	if OS.is_debug_build():
 		for spawn_loc in spawn_locations:

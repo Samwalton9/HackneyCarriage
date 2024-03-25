@@ -52,7 +52,7 @@ func process_movement() -> void:
 
 	# Debug
 	if OS.is_debug_build():
-		make_debugs_visible()
+		update_debugs()
 
 	move_and_slide()
 
@@ -65,9 +65,6 @@ func turn_right() -> void:
 	rotation += current_turn_rate
 
 
-func make_debugs_visible() -> void:
-	$DebugSpeedLabel.visible = true
+func update_debugs() -> void:
 	$DebugSpeedLabel.velocity = velocity
-
-	$DebugPositionLabel.visible = true
-	$DebugPositionLabel.taxi_position = position
+	$DebugPositionLabel.taxi_position = global_position
